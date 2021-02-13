@@ -1,17 +1,14 @@
 var mongoose = require('mongoose');
+var Settings = require('../settings'); 
+
+
 
 const UserSchema = new mongoose.Schema(
     {
         _id: mongoose.Schema.Types.ObjectId,
         name: { type: String, required: true },
         email: { type: String, required: true },
-        status: { type: String, enum: ["WRITER", "EDITOR"] },
-        posts : [
-            {
-                type: mongoose.Schema.Types.ObjectId,
-                ref:'Post'
-            }
-        ]
+        role: { type: String, enum: [ Settings.ROLE_WRITER, Settings.ROLE_WRITER] },
     },
     { collection: 'user' }
 )

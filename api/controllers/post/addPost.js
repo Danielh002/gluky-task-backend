@@ -11,7 +11,8 @@ var addPost = function (req, res) {
             tittle: req.body.tittle,
             content: req.body.content,
             state: Settings.PENDING,
-            authorId: req.body.authorId
+            authorId: req.body.authorId,
+            comments: []
         })
 
         post.save()

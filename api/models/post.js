@@ -15,6 +15,7 @@ const PostSchema = new mongoose.Schema(
         status: { type: String, enum: [ Settings.PENDING , Settings.APPROVED] },
         comments: [
             { 
+                _id: mongoose.Schema.Types.ObjectId,
                 author: { type: String, required: true },
                 comment: { type: String, rquired: true },
                 createdAt : { type : Date, default: Date.now },

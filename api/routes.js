@@ -12,4 +12,10 @@ module.exports = function (app) {
 
     app.route('/post')
         .post(controller.addPost);
+    app.route('/post/:postId')
+        .patch(controller.updatePost);
+    app.route('/post/:postId')
+        .post(controller.addComment);
+     app.route('/posts')
+        .post(controller.getPostsByAnyAtt);
 };

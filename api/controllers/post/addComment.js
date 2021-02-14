@@ -4,16 +4,18 @@ var Post = require('../../models/post');
 
 
 var addComment = function (req, res) {
-    if (req.body.postId, req.body.author && req.body.comment) {
-
+    if (req.params.postId, req.body.author && req.body.comment) {
+        let postId = req.params.postId;
         let comment = {
             _id: new mongoose.Types.ObjectId(),
             author: req.body.author,
             comment: req.body.comment
         }
+        console.log(postId);
 
-        let post = await Post.findById(req.body.postId)
-        if (post) {
+        Post.findById(postId).exec().then(result => {
+            let post = result;
+            console.log(post)
             post.comments.push(comment)
             post.save()
                 .then(result => {
@@ -29,13 +31,13 @@ var addComment = function (req, res) {
                         error: error
                     })
                 })
-        }
-        else {
+        }).catch(error => {
             res.status(500).json({
                 message: 'No post found to add comment',
                 error: 'Invalid data'
             })
-        }
+        })
+
     }
 
     else {

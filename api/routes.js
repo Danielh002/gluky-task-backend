@@ -16,6 +16,6 @@ module.exports = function (app) {
         .patch(controller.updatePost);
     app.route('/post/:postId')
         .post(controller.addComment);
-     app.route('/posts')
+    app.route('/posts')
         .post(controller.getPostsByAnyAtt);
 };

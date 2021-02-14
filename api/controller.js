@@ -10,7 +10,7 @@ var addCommentFunction = require('./controllers/post/addComment');
 
 
 var controllers = {
-    about: function (res) {
+    about: function (req, res) {
         var aboutInfo = {
             name: properties.name,
             version: properties.version

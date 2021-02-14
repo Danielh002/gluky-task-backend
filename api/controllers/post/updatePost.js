@@ -2,7 +2,7 @@ var Post = require('../../models/post');
 
 var updatePost = function (req, res) {
     const postId = req.params.postId
-    if( req.body.length > 0 &&  userTaskId){
+    if( req.body.length > 0 &&  postId){
         const updateOps = {};
         for(let ops of req.body){
             updateOps[ops.propName] = ops.value;

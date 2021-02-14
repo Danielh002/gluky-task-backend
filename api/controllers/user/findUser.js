@@ -1,8 +1,9 @@
 var User = require('../../models/user'); 
 
 var findUser = function (req, res) {
-    if( req.body.email ){
-        User.findOne({ 'email': 'req.body.email'})
+    let email = req.params.userEmail
+    if( req.params.userEmail ){
+        User.findOne({ 'email': email})
             .then(result => {
                 console.log(result);  
                 res.status(201).json({

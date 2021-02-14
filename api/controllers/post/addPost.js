@@ -20,7 +20,7 @@ var addPost = function (req, res) {
                 console.log(result);
                 res.status(201).json({
                     message: 'Created user post',
-                    result: userTask
+                    result: result
                 })
             })
             .catch(error => {

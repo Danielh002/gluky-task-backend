@@ -6,13 +6,13 @@ var Settings = require('../settings');
 const PostSchema = new mongoose.Schema(
     {
         _id: mongoose.Schema.Types.ObjectId,
-        authorId: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+        author: { type: mongoose.Schema.Types.ObjectId, ref: 'User',  required: true},
         tittle: { type: String, required: true },
         content: { type: String, required: true },
         imageUrl: { type: String },
         createdAt : { type : Date, default: Date.now },
         updatedAt : { type : Date },
-        status: { type: String, enum: [ Settings.PENDING , Settings.APPROVED] },
+        status: { type: String, enum: [ Settings.PENDING , Settings.APPROVED], default: Settings.PENDING },
         comments: [
             { 
                 _id: mongoose.Schema.Types.ObjectId,

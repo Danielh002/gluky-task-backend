@@ -5,13 +5,13 @@ var Post = require('../../models/post');
 
 
 var addPost = function (req, res) {
-    if(req.body.authorId && req.body.tittle && req.body.content){
+    if(req.body.author && req.body.tittle && req.body.content){
         const post = new Post({
             _id:  new mongoose.Types.ObjectId(),
             tittle: req.body.tittle,
             content: req.body.content,
             state: Settings.PENDING,
-            authorId: req.body.authorId,
+            author: req.body.author,
             comments: []
         })
 

@@ -6,6 +6,7 @@ var getUsersAndTask = function (req, res) {
         findOps[ops.propName] = ops.value;
     }
     Post.find(findOps)
+    .populate('author')
     .then(result => {
         console.log(result);  
         res.status(201).json({

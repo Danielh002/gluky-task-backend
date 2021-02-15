@@ -1,6 +1,7 @@
 const Settings = {
     PENDING : "PENDING",
-    APPROVED: "APPROVED" ,
+    APPROVED: "APPROVED",
+    DENIED: "DENIED" ,
     ROLE_WRITER : "WRITER",
     ROLE_EDITOR : "EDITOR"
 }

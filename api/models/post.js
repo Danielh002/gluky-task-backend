@@ -12,7 +12,7 @@ const PostSchema = new mongoose.Schema(
         imageUrl: { type: String },
         createdAt : { type : Date, default: Date.now },
         updatedAt : { type : Date },
-        status: { type: String, enum: [ Settings.PENDING , Settings.APPROVED], default: Settings.PENDING },
+        status: { type: String, enum: [ Settings.PENDING , Settings.APPROVED, Settings.DENIED], default: Settings.PENDING },
         comments: [
             { 
                 _id: mongoose.Schema.Types.ObjectId,

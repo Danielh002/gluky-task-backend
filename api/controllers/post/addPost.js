@@ -3,7 +3,6 @@ var Settings = require('../../settings');
 var Post = require('../../models/post'); 
 
 
-
 var addPost = function (req, res) {
     if(req.body.author && req.body.tittle && req.body.content){
         const post = new Post({

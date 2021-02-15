@@ -8,23 +8,34 @@ var addUser = function (req, res) {
             _id:  new mongoose.Types.ObjectId(),
             name: req.body.name,
             email: req.body.email,
+            imageUrl: req.body.imageUrl ?? '',
             role: Settings.ROLE_WRITER,
         })
-    
-        user.save()
-            .then(result => {
-                console.log(result);  
+
+        User.count({email: req.body.email}).then(result => {
+            if(result > 0){
                 res.status(201).json({
-                    message: 'Created user',
-                    result: user
+                    message: 'User already exist',
+                    result:  user
                 })
-            })
-            .catch(error => {
-                res.status(500).json({
-                    message: 'Error creating user',
-                    error: error
+            }
+            else{
+                user.save()
+                .then(result => {
+                    console.log(result);  
+                    res.status(201).json({
+                        message: 'Created user',
+                        result: user
+                    })
                 })
-            })
+                .catch(error => {
+                    res.status(500).json({
+                        message: 'Error creating user',
+                        error: error
+                    })
+                })     
+            }
+        })
     }
     else{
         res.status(500).json({

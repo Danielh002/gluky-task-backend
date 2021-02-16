@@ -12,11 +12,11 @@ var addUser = function (req, res) {
             role: Settings.ROLE_WRITER,
         })
 
-        User.count({email: req.body.email}).then(result => {
-            if(result > 0){
+        User.findOne({email: req.body.email}).then(result => {
+            if(result){
                 res.status(201).json({
-                    message: 'User already exist',
-                    result:  user
+                    message: 'User already exists',
+                    result: result
                 })
             }
             else{

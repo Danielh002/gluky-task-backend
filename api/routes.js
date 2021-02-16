@@ -1,6 +1,7 @@
 'use strict';
 
 const controller = require('./controller');
+const middleware = require('./middleware'); 
 
 module.exports = function (app) {
     app.route('/about')
@@ -8,12 +9,11 @@ module.exports = function (app) {
     app.route('/user')
         .post(controller.addUser);
     app.route('/user/:userEmail')
-        .get(controller.findUser);
-
+        .get( middleware.checkAuthenticated, controller.findUser);
     app.route('/post')
-        .post(controller.addPost);
+        .post(middleware.checkAuthenticated, controller.addPost);
     app.route('/post/:postId')
-        .patch(controller.updatePost);
+        .patch(middleware.checkAuthenticated, controller.updatePost);
     app.route('/post/:postId')
         .post(controller.addComment);
     app.route('/posts')

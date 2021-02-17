@@ -9,7 +9,7 @@ var addPost = function (req, res) {
             _id:  new mongoose.Types.ObjectId(),
             tittle: req.body.tittle,
             content: req.body.content,
-            state: Settings.PENDING,
+            state: req.body.status ??  Settings.PENDING,
             author: req.body.author,
             comments: []
         })
@@ -24,6 +24,7 @@ var addPost = function (req, res) {
             })
             .catch(error => {
                 res.status(500).json({
+                    
                     message: 'Error saving in db',
                     error: error
                 })

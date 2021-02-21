@@ -8,7 +8,7 @@ var addUser = function (req, res) {
             _id:  new mongoose.Types.ObjectId(),
             name: req.body.name,
             email: req.body.email,
-            imageUrl: req.body.imageUrl ?? '',
+            imageUrl: req.body.imageUrl || '',
             role: Settings.ROLE_WRITER,
         })
 

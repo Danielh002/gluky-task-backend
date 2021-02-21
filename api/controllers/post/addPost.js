@@ -10,7 +10,7 @@ var addPost = function (req, res) {
             _id:  new mongoose.Types.ObjectId(),
             tittle: req.body.tittle,
             content: req.body.content,
-            status: req.body.status ??  Settings.PENDING,
+            status: req.body.status ||  Settings.PENDING,
             author: req.body.author,
             comments: []
         })

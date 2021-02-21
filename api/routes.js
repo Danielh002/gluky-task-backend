@@ -13,9 +13,13 @@ module.exports = function (app) {
     app.route('/post')
         .post(middleware.checkAuthenticated, controller.addPost);
     app.route('/post/:postId')
+        .delete(middleware.checkAuthenticated, controller.deletePost);
+    app.route('/post/:postId')
         .patch(middleware.checkAuthenticated, controller.updatePost);
     app.route('/post/:postId')
         .post(controller.addComment);
+    app.route('/posts/:status/:email')
+        .get(controller.getPostsByStatusEmail);
     app.route('/posts')
         .post(controller.getPostsByAnyAtt);
 };

@@ -15,17 +15,22 @@ async function verify(token) {
 }
 
 async function checkAuthenticated(req, res, next){
-    let token = req.headers['token']
-    try{
-        req.user = await verify(token)
+    if(process.env.NODE_ENV == 'test'){
         next();
     }
-    catch(error){
-        res.status(403).json({
-            message: 'Invalid token',
-            error: error
-        })
-    
+    else{
+        let token = req.headers['token']
+        try{
+            req.user = await verify(token)
+            next();
+        }
+        catch(error){
+            res.status(403).json({
+                message: 'Invalid token',
+                error: error
+            })
+        
+        }
     }
 }
 

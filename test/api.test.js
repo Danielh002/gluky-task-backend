@@ -55,7 +55,7 @@ describe('Testing API', () => {
     it('Created a post', (done) => {
         request(app).post('/post')
             .send({
-                authorId: userIdCreated,
+                author: userIdCreated,
                 tittle:"Test Tittle",
                 content : "content"
             }) 
